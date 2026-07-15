@@ -32,6 +32,10 @@ venv\Scripts\activate
 # macOS/Linux:
 source venv/bin/activate
 
+# Set up environment variables
+cp .env.example .env
+# Edit .env with your database credentials
+
 # Install dependencies
 pip install -r requirements.txt
 
@@ -108,6 +112,23 @@ Frontend runs at: `http://localhost:3000`
 
 ## Tech Stack
 
-- **Backend:** Django 4.2, Django REST Framework, SQLite
+- **Backend:** Django 4.2, Django REST Framework, PostgreSQL
 - **Frontend:** React 18, React Router, Axios, Vite
 - **Auth:** Token-based authentication (DRF TokenAuth)
+
+---
+
+## Environment Variables
+
+Create a `.env` file in the `backend/` directory using `.env.example` as reference:
+
+```env
+SECRET_KEY=your-secret-key-here
+DB_NAME=blog_db
+DB_USER=your_db_user
+DB_PASSWORD=your_db_password
+DB_HOST=localhost
+DB_PORT=5432
+```
+
+> **Note:** Never commit the `.env` file. It is already added to `.gitignore`.
