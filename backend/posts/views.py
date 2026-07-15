@@ -22,6 +22,8 @@ class CommentViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
 
     def get_queryset(self):
+        if getattr(self, 'swagger_fake_view', False):
+            return Comment.objects.none()
         return Comment.objects.filter(post_id=self.kwargs['post_pk'])
 
     def perform_create(self, serializer):
